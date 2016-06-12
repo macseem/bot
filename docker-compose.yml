@@ -1,0 +1,27 @@
+php:
+  build: build/php
+  volumes:
+    - "./env/php/php-fpm-dev.ini:/usr/local/etc/php/php.ini"
+    - "./env/php/php-fpm.conf:/usr/local/etc/php-fpm.conf"
+    - ".:/var/www/html"
+  volumes_from:
+    - "run"
+  environment:
+      XDEBUG_REMOTE_HOST: "{{YOU_REAL_IP_ADDRESS}}"
+
+nginx:
+  build: build/nginx
+  ports:
+    - "80:80"
+  volumes:
+    - "./public/:/var/www/html/public"
+    - "./env/nginx/conf.d:/etc/nginx/conf.d"
+    - "./logs:/var/log/nginx"
+    - "./env/nginx/nginx.conf:/etc/nginx/nginx.conf"
+  volumes_from:
+    - "run"
+run:
+  image: busybox
+  command: echo 123
+  volumes:
+    - "/var/run"

@@ -1,0 +1,17 @@
+{
+  "name": "macseem/bot",
+  "description": "It is a chat-bot. Simple AI",
+  "minimum-stability": "dev",
+  "license": "GPL3",
+  "authors": [
+    {
+      "name": "Maksym Dudkin",
+      "email": "lugamax@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Bot\\" : "./src"
+    }
+  }
+}
